@@ -38,10 +38,6 @@ import nestedRouter from './modules/nested'
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
- /*
-  左侧导航栏控制
-
- */
 export const constantRoutes = [
   {
     path: '/redirect',
@@ -95,11 +91,11 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/documentation/index'),
         name: 'Documentation',
-        meta: { title: '资产总览', icon: 'documentation', affix: true }
+        meta: { title: 'Documentation', icon: 'documentation', affix: true }
       }
     ]
   },
-  /*{
+  {
     path: '/guide',
     component: Layout,
     redirect: '/guide/index',
@@ -111,8 +107,8 @@ export const constantRoutes = [
         meta: { title: 'Guide', icon: 'guide', noCache: true }
       }
     ]
-  },*/
-  /*{
+  },
+  {
     path: '/profile',
     component: Layout,
     redirect: '/profile/index',
@@ -125,7 +121,7 @@ export const constantRoutes = [
         meta: { title: 'Profile', icon: 'user', noCache: true }
       }
     ]
-  }*/
+  }
 ]
 
 /**

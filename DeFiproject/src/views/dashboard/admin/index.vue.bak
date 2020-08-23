@@ -73,8 +73,7 @@ const lineChartData = {
 export default {
   name: 'DashboardAdmin',
   components: {
-    /*资产总览页右上角的github地址连接*/
-    /*GithubCorner,*/
+    GithubCorner,
     PanelGroup,
     LineChart,
     RaddarChart,
