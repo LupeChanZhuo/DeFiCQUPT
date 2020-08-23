@@ -38,11 +38,12 @@
           <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
             <el-dropdown-item>Docs</el-dropdown-item>
           </a> -->
-          <!-- 右上角下拉栏 -->
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
+          <!-- 右上角下拉栏 @TODO -->
+          <a target="_blank" href="">
             <el-dropdown-item>连接钱包</el-dropdown-item>
           </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
+          <!-- @TODO -->
+          <a target="_blank" href="">
             <el-dropdown-item>追踪账户</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
