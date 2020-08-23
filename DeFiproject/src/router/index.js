@@ -39,7 +39,7 @@ import nestedRouter from './modules/nested'
  * all roles can be accessed
  */
  /*
-  ×ó²àµ¼º½À¸¿ØÖÆ
+  Ã—Ã³Â²Ã ÂµÂ¼ÂºÂ½Ã€Â¸Â¿Ã˜Ã–Ã†
 
  */
 export const constantRoutes = [
@@ -95,7 +95,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/documentation/index'),
         name: 'Documentation',
-        meta: { title: '×Ê²ú×ÜÀÀ', icon: 'documentation', affix: true }
+        meta: { title: 'èµ„äº§æ€»è§ˆ', icon: 'documentation', affix: true }
       }
     ]
   },

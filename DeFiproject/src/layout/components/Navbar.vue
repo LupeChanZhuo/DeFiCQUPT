@@ -6,14 +6,14 @@
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
-        <!-- 查找功能 -->
+        <!-- 鏌ユ壘鍔熻兘 -->
         <!-- <search id="header-search" class="right-menu-item" /> -->
 
         <error-log class="errLog-container right-menu-item hover-effect" />
 
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
 
-        <!-- 字体切换功能 -->
+        <!-- 瀛椾綋鍒囨崲鍔熻兘 -->
         <!-- <el-tooltip content="Global Size" effect="dark" placement="bottom">
           <size-select id="size-select" class="right-menu-item hover-effect" />
         </el-tooltip> -->
@@ -38,12 +38,12 @@
           <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
             <el-dropdown-item>Docs</el-dropdown-item>
           </a> -->
-          <!-- 右上角下拉栏 -->
+          <!-- 鍙充笂瑙掍笅鎷夋爮 -->
           <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>连接钱包</el-dropdown-item>
+            <el-dropdown-item>杩炴帴閽卞寘</el-dropdown-item>
           </a>
           <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>追踪账户</el-dropdown-item>
+            <el-dropdown-item>杩借釜璐︽埛</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">Log Out</span>
