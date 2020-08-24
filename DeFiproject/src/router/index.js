@@ -39,7 +39,7 @@ import nestedRouter from './modules/nested'
  * all roles can be accessed
  */
  /*
-  ×ó²àµ¼º½À¸¿ØÖÆ
+  左侧导航栏控制
 
  */
 export const constantRoutes = [

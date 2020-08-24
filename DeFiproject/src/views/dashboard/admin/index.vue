@@ -50,30 +50,34 @@ import BarChart from './components/BarChart'
 import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
+//导入api包中的方法
+import { getDataFunction } from '@/api/defi'
+import requestUtil from '@/utils/request'
 
-const lineChartData = {
-  newVisitis: {
-    expectedData: [100, 120, 161, 134, 105, 160, 165],
-    actualData: [120, 82, 91, 154, 162, 140, 145]
-  },
-  messages: {
-    expectedData: [200, 192, 120, 144, 160, 130, 140],
-    actualData: [180, 160, 151, 106, 145, 150, 130]
-  },
-  purchases: {
-    expectedData: [80, 100, 121, 104, 105, 90, 100],
-    actualData: [120, 90, 100, 138, 142, 130, 130]
-  },
-  shoppings: {
-    expectedData: [130, 140, 141, 142, 145, 150, 160],
-    actualData: [120, 82, 91, 154, 162, 140, 130]
+
+let lineChartData = {
+    newVisitis: {
+      expectedData: [0, 0, 0, 0, 0, 0, 0],
+      actualData: [0, 0, 0, 0, 0, 0, 0]
+    },
+    messages: {
+      expectedData: [0, 192, 120, 144, 160, 130, 140],
+      actualData: [180, 160, 1, 106, 145, 150, 130]
+    },
+    purchases: {
+      expectedData: [80, 100, 11, 104, 105, 90, 100],
+      actualData: [120, 90, 100, 13, 142, 130, 130]
+    },
+    shoppings: {
+      expectedData: [130, 140, 1, 142, 145, 150, 160],
+      actualData: [120, 2, 91, 154, 162, 140, 130]
+    }
   }
-}
 
 export default {
   name: 'DashboardAdmin',
   components: {
-    /*�ʲ�����ҳ���Ͻǵ�github��ַ����*/
+    /*右上角的github连接*/
     /*GithubCorner,*/
     PanelGroup,
     LineChart,
@@ -86,15 +90,32 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData:lineChartData.newVisitis
     }
   },
   methods: {
+    getData() {
+      requestUtil({
+        baseURL:'http://localhost:8080',
+        url: '/getData',
+        method: 'get'
+      }).then(response => {
+        //赋值  注！！！数组不可以按下标赋值！！
+        this.lineChartData.expectedData=response.expectedData
+        this.lineChartData.actualData=response.actualData
+      })
+    },
     handleSetLineChartData(type) {
       this.lineChartData = lineChartData[type]
     }
+  },
+  created() {
+    //前段从后台取数据
+    this.getData()
   }
 }
+
+
 </script>
 
 <style lang="scss" scoped>
