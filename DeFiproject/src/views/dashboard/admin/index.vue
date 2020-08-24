@@ -97,7 +97,7 @@ export default {
     getData() {
       requestUtil({
         baseURL:'http://localhost:8080',
-        url: '/getData',
+        url: '/getTestData',
         method: 'get'
       }).then(response => {
         //赋值  注！！！数组不可以按下标赋值！！
