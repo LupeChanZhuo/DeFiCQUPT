@@ -1,9 +1,10 @@
 <template>
   <div class="dashboard-editor-container">
     <github-corner class="github-corner" />
+    <BoxLogo />
+    <BoxCard2 />
 
-    <panel-group @handleSetLineChartData="handleSetLineChartData" />
-
+   <!--  <panel-group @handleSetLineChartData="handleSetLineChartData" /> -->
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
       <line-chart :chart-data="lineChartData" />
     </el-row>
@@ -50,6 +51,8 @@ import BarChart from './components/BarChart'
 import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
+import BoxLogo from './components/BoxLogo'
+import BoxCard2 from './components/BoxCard2'
 //导入api包中的方法
 import { getDataFunction } from '@/api/defi'
 import requestUtil from '@/utils/request'
@@ -86,7 +89,9 @@ export default {
     BarChart,
     TransactionTable,
     TodoList,
-    BoxCard
+    BoxCard,
+    BoxLogo,
+    BoxCard2
   },
   data() {
     return {
@@ -95,14 +100,17 @@ export default {
   },
   methods: {
     getData() {
+      window.console.log("window.console.log(response)+getData")
       requestUtil({
         baseURL:'http://localhost:8080',
-        url: '/getTestData',
-        method: 'get'
+        url: '/DefiServer/main/getTokenbalance',
+        method: 'post',
+        data: { //post请求用 data
+            ETHStr:'0x1062a747393198f70f71ec65a582423dba7e5ab3',
+        }
       }).then(response => {
-        //赋值  注！！！数组不可以按下标赋值！！
-        this.lineChartData.expectedData=response.expectedData
-        this.lineChartData.actualData=response.actualData
+        window.console.log(response)
+       
       })
     },
     handleSetLineChartData(type) {

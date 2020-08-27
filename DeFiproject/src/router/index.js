@@ -7,10 +7,10 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /* Router Modules */
-import componentsRouter from './modules/components'
-import chartsRouter from './modules/charts'
-import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
+//import componentsRouter from './modules/components'
+//import chartsRouter from './modules/charts'
+// import tableRouter from './modules/table'
+// import nestedRouter from './modules/nested'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -133,7 +133,7 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  {
+  /*{
     path: '/permission',
     component: Layout,
     redirect: '/permission/page',
@@ -173,9 +173,9 @@ export const asyncRoutes = [
         }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/icon',
     component: Layout,
     children: [
@@ -186,15 +186,15 @@ export const asyncRoutes = [
         meta: { title: 'Icons', icon: 'icon', noCache: true }
       }
     ]
-  },
+  },*/
 
   /** when your routing map is too long, you can split it into small modules **/
-  componentsRouter,
-  chartsRouter,
-  nestedRouter,
-  tableRouter,
+ // componentsRouter,
+//  chartsRouter,
+  // nestedRouter,
+  // tableRouter,
 
-  {
+  /*{
     path: '/example',
     component: Layout,
     redirect: '/example/list',
@@ -224,9 +224,9 @@ export const asyncRoutes = [
         meta: { title: 'Article List', icon: 'list' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/tab',
     component: Layout,
     children: [
@@ -237,7 +237,7 @@ export const asyncRoutes = [
         meta: { title: 'Tab', icon: 'tab' }
       }
     ]
-  },
+  },*/
 
   {
     path: '/error',
@@ -277,7 +277,7 @@ export const asyncRoutes = [
     ]
   },
 
-  {
+  /*{
     path: '/excel',
     component: Layout,
     redirect: '/excel/export-excel',
@@ -312,9 +312,9 @@ export const asyncRoutes = [
         meta: { title: 'Upload Excel' }
       }
     ]
-  },
+  },*/
 
-  {
+ /* {
     path: '/zip',
     component: Layout,
     redirect: '/zip/download',
@@ -329,9 +329,9 @@ export const asyncRoutes = [
         meta: { title: 'Export Zip' }
       }
     ]
-  },
+  },*/
 
-  {
+ /* {
     path: '/pdf',
     component: Layout,
     redirect: '/pdf/index',
@@ -361,9 +361,9 @@ export const asyncRoutes = [
         meta: { title: 'Theme', icon: 'theme' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/clipboard',
     component: Layout,
     children: [
@@ -385,7 +385,7 @@ export const asyncRoutes = [
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
-  },
+  },*/
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
