@@ -1,7 +1,10 @@
 <template>
   <div>
+    <p>{{nameaddress}}</p>
     <admin-documentation />
+    
   </div>
+
 </template>
 
 <script>
@@ -12,6 +15,7 @@ export default {
   components: { adminDocumentation },
   data() {
     return {
+      nameaddress:this.$route.query.nameaddress,
       articleList: [
         { title: '基础篇', href: 'https://juejin.im/post/59097cd7a22b9d0065fb61d2' },
         { title: '登录权限篇', href: 'https://juejin.im/post/591aa14f570c35006961acac' },
@@ -23,6 +27,17 @@ export default {
         { title: 'webpack4（上）', href: 'https://juejin.im/post/59bb864b5188257e7a427c09' },
         { title: 'webpack4（下）', href: 'https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc' }
       ]
+    }
+  },
+  beforeCreated() {
+    this.test()
+  },
+  method: {
+    test() {
+
+      console.log("q==============================")
+      // var nameaddress = this.nameaddress
+      // this.$message("saddress","213123")
     }
   }
 }

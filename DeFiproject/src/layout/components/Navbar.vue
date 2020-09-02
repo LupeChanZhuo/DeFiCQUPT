@@ -42,16 +42,19 @@
           <a target="_blank" href="">
             <el-dropdown-item>连接钱包</el-dropdown-item>
           </a>
+
           <!-- @TODO -->
-          <a target="_blank" href="">
+          <a href="#" @click="openSelf()">
             <el-dropdown-item>追踪账户</el-dropdown-item>
           </a>
+          
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">Log Out</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+     <Modal v-show="showmodal" @closeme="closeme" />
   </div>
 </template>
 
@@ -63,7 +66,7 @@ import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
-
+import Modal from './Modal'
 export default {
   components: {
     Breadcrumb,
@@ -71,7 +74,8 @@ export default {
     ErrorLog,
     Screenfull,
     SizeSelect,
-    Search
+    Search,
+    Modal
   },
   computed: {
     ...mapGetters([
@@ -80,9 +84,20 @@ export default {
       'device'
     ])
   },
+  data() {
+    return {
+      showmodal: false
+    }
+  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
+    },
+    openSelf() {
+      this.showmodal = !this.showmodal
+    },
+    closeme() {
+      this.showmodal = !this.showmodal
     },
     async logout() {
       await this.$store.dispatch('user/logout')

@@ -1,258 +1,49 @@
 <template>
-  <div>
-    <el-row :gutter="40" class="panel-group">
-    <el-col :xs="12" :sm="12" :lg="8" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
-        <div class="card-panel-icon-wrapper icon-people">
-          <svg-icon icon-class="money" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            净资产
-          </div>
-          <count-to :start-val="0" :end-val="totalValue" :duration="2600" class="card-panel-num" />
-        </div>
+  <el-row :gutter="40" class="box-chart">
+    <el-col :xs="24" :sm="8" :lg="8">
+      <div v-if="BoxWalletdata.tablelist.length !=0" class="box-small">
+        <p>Wallet</p>
       </div>
     </el-col>
-    <el-col :xs="12" :sm="12" :lg="8" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('messages')">
-        <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon icon-class="money" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            总资产
-          </div>
-          <count-to :start-val="0" :end-val="totalValue" :duration="3000" class="card-panel-num" />
-        </div>
+    <!-- <el-col :xs="24" :sm="8" :lg="8">
+      <div v-if="BoxWalletdata.tablelist.length !=0" class="box-small">
+        <p>sdad</p>
       </div>
     </el-col>
-    <el-col :xs="12" :sm="12" :lg="8" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('purchases')">
-        <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon icon-class="money" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            总负债
-          </div>
-          <count-to :start-val="0" :end-val="0" :duration="3200" class="card-panel-num" />
-        </div>
-      </div>
-    </el-col>
-    <!-- <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('shoppings')">
-        <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon icon-class="shopping" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            Shoppings
-          </div>
-          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
-        </div>
+    <el-col :xs="24" :sm="8" :lg="8">
+      <div v-if="BoxWalletdata.tablelist.length !=0" class="box-small">
+        <p>sdad</p>
       </div>
     </el-col> -->
   </el-row>
-  
-  <div class="box-chart">
-    <el-row>
-      <el-col :xs="24" :sm="24" :lg="24">
-        <h3>钱包</h3>
-      </el-col>
-    </el-row>
-    <el-row >
-      <el-col :xs="24" :sm="24" :lg="24" class="box-chart-col">
-        <table class="el-table" style="width: 100%">
-          <thead>
-            <tr>
-              <th width="25%">资产</th>
-              <th width="25%">汇率</th>
-              <th width="25%">余额</th>
-              <th width="25%">价值</th>
-            </tr>
-          </thead>
-          <tbody v-for="list in Tokenbalance" :key="list.index" v-if="list.trueBalance != 0 && list.fullName !='' && list.rate !=0">
-            <tr>
-              <td width="25%">{{ list.fullName }}</td>
-              <td width="25%">${{ list.rate }}</td>
-              <td width="25%">{{ list.trueBalance }}</td>
-              <td width="25%">{{ list.rate * list.trueBalance }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </el-col>
-    </el-row>
-  </div>
-</div>
 </template>
 
 <script>
-import requestUtil from '@/utils/request'
-import CountTo from 'vue-count-to'
+import BoxWallet from './BoxWallet'
+//import BoxDeposits from './BoxDeposits'
+//import LiquidityPools from './LiquidityPools'
+
 export default {
   name: 'BoxChart',
-   components: {
-    CountTo
+  components: {
+    BoxWallet
+    //BoxDeposits,
+    //LiquidityPools
   },
   data() {
     return {
-      Tokenbalance:[],
-      totalValue:'0'
+      BoxWalletdata: BoxWallet.data()
     }
-  },
-  methods: {
-    getTokenbalance() {
-    requestUtil({
-      baseURL:'http://localhost:8080',
-      url: '/DefiServer/main/getTokenbalance',
-      method: 'post',
-      data: { //post请求用 data
-        ETHStr:'0x1062a747393198f70f71ec65a582423dba7e5ab3',
-        
-      }
-    }).then(response => {
-      //赋值  注！！！数组不可以按下标赋值！！
-      var _this = this
-      _this.Tokenbalance = response.data
-      _this.totalValue=response.totalValue
-    })
   }
-    // getData() {
-    //   window.console.log("response.data")
-    //   requestUtil({
-    //     baseURL:'http://172.22.144.122:8080',
-    //     url: '/DefiServer/main/getExchangeRate',
-    //     method: 'post',
-    //     data: { //post请求用 data
-    //       ETHStr:'0x1062a747393198f70f71ec65a582423dba7e5ab3',
-    //     }
-
-    //   }).then(response => {
-          
-    //   })
-    // }
-},
- created() {
-    this.getTokenbalance()
-}
-
 }
 </script>
 
 <style lang="scss" scoped>
 .box-chart {
-  .box-chart-col {
-    background-color: white;
-    padding: 12px;
+  .box-small {
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 15px;
   }
 }
-
-.panel-group {
-    margin-top: 18px;
-
-    .card-panel-col {
-      margin-bottom: 32px;
-    }
-
-    .card-panel {
-      height: 108px;
-      cursor: pointer;
-      font-size: 12px;
-      position: relative;
-      overflow: hidden;
-      color: #666;
-      background: #fff;
-      box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-      border-color: rgba(0, 0, 0, .05);
-
-      &:hover {
-        .card-panel-icon-wrapper {
-          color: #fff;
-        }
-
-        .icon-people {
-          background: #40c9c6;
-        }
-
-        .icon-message {
-          background: #36a3f7;
-        }
-
-        .icon-money {
-          background: #f4516c;
-        }
-
-        .icon-shopping {
-          background: #34bfa3
-        }
-      }
-
-      .icon-people {
-        color: #40c9c6;
-      }
-
-      .icon-message {
-        color: #36a3f7;
-      }
-
-      .icon-money {
-        color: #f4516c;
-      }
-
-      .icon-shopping {
-        color: #34bfa3
-      }
-
-      .card-panel-icon-wrapper {
-        float: left;
-        margin: 14px 0 0 14px;
-        padding: 16px;
-        transition: all 0.38s ease-out;
-        border-radius: 6px;
-      }
-
-      .card-panel-icon {
-        float: left;
-        font-size: 48px;
-      }
-
-      .card-panel-description {
-        float: right;
-        font-weight: bold;
-        margin: 26px;
-        margin-left: 0px;
-
-        .card-panel-text {
-          line-height: 18px;
-          color: rgba(0, 0, 0, 0.45);
-          font-size: 16px;
-          margin-bottom: 12px;
-        }
-
-        .card-panel-num {
-          font-size: 20px;
-        }
-      }
-    }
-  }
-
-  @media (max-width:550px) {
-    .card-panel-description {
-      display: none;
-    }
-
-    .card-panel-icon-wrapper {
-      float: none !important;
-      width: 100%;
-      height: 100%;
-      margin: 0 !important;
-
-      .svg-icon {
-        display: block;
-        margin: 14px auto !important;
-        float: none !important;
-      }
-    }
-  }
 </style>

@@ -6,11 +6,12 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
-/* Router Modules */
+// /* Router Modules 
 //import componentsRouter from './modules/components'
 //import chartsRouter from './modules/charts'
 // import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
+// import defiRouter from './modules/difilist'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -98,6 +99,19 @@ export const constantRoutes = [
         meta: { title: '资产总览', icon: 'documentation', affix: true }
       }
     ]
+  },
+   {
+    path: '/defilist',
+  component: Layout,
+  children: [
+    {
+
+      path: 'index',
+      component: () => import('@/views/defilist/index'),
+      name: 'DeFiList',
+      meta: { title: '项目列表', icon: 'list', noCache: true }
+    }
+  ]
   },
   /*{
     path: '/guide',
@@ -193,14 +207,15 @@ export const asyncRoutes = [
 //  chartsRouter,
   // nestedRouter,
   // tableRouter,
+  // defiRouter,
 
-  /*{
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/list',
     name: 'Example',
     meta: {
-      title: 'Example',
+      title: 'DeFi资讯',
       icon: 'el-icon-s-help'
     },
     children: [
@@ -208,7 +223,7 @@ export const asyncRoutes = [
         path: 'create',
         component: () => import('@/views/example/create'),
         name: 'CreateArticle',
-        meta: { title: 'Create Article', icon: 'edit' }
+        meta: { title: '项目列表', icon: 'edit' }
       },
       {
         path: 'edit/:id(\\d+)',
@@ -221,12 +236,12 @@ export const asyncRoutes = [
         path: 'list',
         component: () => import('@/views/example/list'),
         name: 'ArticleList',
-        meta: { title: 'Article List', icon: 'list' }
+        meta: { title: 'DeFi排行榜单', icon: 'list' }
       }
     ]
-  },*/
-
-  /*{
+  },
+/*
+  {
     path: '/tab',
     component: Layout,
     children: [
@@ -237,9 +252,9 @@ export const asyncRoutes = [
         meta: { title: 'Tab', icon: 'tab' }
       }
     ]
-  },*/
-
-  {
+  },
+*/
+ /* {
     path: '/error',
     component: Layout,
     redirect: 'noRedirect',
@@ -272,11 +287,11 @@ export const asyncRoutes = [
         path: 'log',
         component: () => import('@/views/error-log/index'),
         name: 'ErrorLog',
-        meta: { title: 'Error Log', icon: 'bug' }
+        meta: { title: '资产总览', icon: 'bug' }
       }
     ]
   },
-
+*/
   /*{
     path: '/excel',
     component: Layout,

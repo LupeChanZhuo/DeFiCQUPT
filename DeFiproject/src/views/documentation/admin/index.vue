@@ -1,16 +1,35 @@
 <template>
   <div class="documentation-admin-container">
-  <!--   <PanelGroup /> -->
-    <BoxChart />
+    <PanelGroup />
+    <page-switch />
+    <div v-show="show" @closeme="closeme">
+      <BoxWallet />
+      <BoxDeposits />
+      <liquidity-pools />
+    </div>
   </div>
 </template>
 
 <script>
 import PanelGroup from './components/PanelGroup'
-import BoxChart from './components/BoxChart'
+import BoxWallet from './components/BoxWallet'
+import BoxDeposits from './components/BoxDeposits'
+import LiquidityPools from './components/LiquidityPools'
+import PageSwitch from './components/PageSwitch'
 export default {
   name: 'DocumentationAdmin',
-  components: { PanelGroup, BoxChart }
+  components: { PanelGroup, BoxWallet,  PageSwitch },//BoxDeposits, LiquidityPools,
+  data() {
+    return {
+      show: true
+    }
+  },
+  methods: {
+    closeme: function() {
+      console.log('是')
+      this.show = !this.show
+    }
+  }
 }
 </script>
 

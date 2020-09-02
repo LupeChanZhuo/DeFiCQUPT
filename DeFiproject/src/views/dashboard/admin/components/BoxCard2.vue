@@ -81,7 +81,7 @@ export default {
   }
 },
  created() {
-    this.getTokenbalance()
+    //this.getTokenbalance()
 }
 }
 
